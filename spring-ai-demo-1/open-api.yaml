@@ -1,0 +1,46 @@
+openapi: 3.0.0
+info:
+  title: Grammar Correction API
+  description: An API for correcting English grammar using AI
+  version: 1.0.0
+
+paths:
+  /ai/grammar:
+    post:
+      summary: Correct grammar
+      description: Corrects the grammar of the provided text
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GrammarRequest'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GrammarResponse'
+        '400':
+          description: Bad request
+        '500':
+          description: Internal server error
+
+components:
+  schemas:
+    GrammarRequest:
+      type: object
+      properties:
+        message:
+          type: string
+          description: The text to be corrected
+      required:
+        - message
+
+    GrammarResponse:
+      type: object
+      properties:
+        correctedResponse:
+          type: string
+          description: The corrected text

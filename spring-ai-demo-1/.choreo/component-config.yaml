@@ -1,0 +1,9 @@
+apiVersion: core.choreo.dev/v1beta1
+kind: ComponentConfig
+spec:
+  inbound:
+    - name: Grammar Corrector API
+      port: 8090
+      type: REST
+      networkVisibility: Public
+      schemaFilePath: open-api.yaml
